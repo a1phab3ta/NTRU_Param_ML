@@ -65,8 +65,7 @@ The machine learning model is implemented in a Jupyter Notebook. This notebook t
 
 The models trained in this project can predict the optimal parameters for the NTRU encryption algorithm for any message length between 1 and 500, ensuring efficient encryption and decryption operations.
 
-- **ntru_performance_data.csv**: Contains the raw performance data collected from running the shell script.
-- **ntru_best_performance_data.csv**: Contains the best performance data identified by the machine learning model.
+- **best_p.csv** - Contains the training data.
 
 ## Contributing
 
