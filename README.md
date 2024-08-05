@@ -32,8 +32,8 @@ To gather data for training the machine learning model, we perform a comprehensi
 
 ### Shell Scripts
 
-- **test_ntru_performance.sh**: This script generates performance data for various parameter combinations of the NTRU algorithm.
-- **test.sh**: This script runs with the best parameters predicted by the model and collects the data in `ntru_best_performance_data.csv`.
+- **ntru_best_data.sh**: This script generates the best parameters for training the model.
+- **test_parameters.sh**: This script runs with the best parameters predicted by the model and collects the data in `ntru_best_performance_data.csv`.
 
 ## Machine Learning Model
 
@@ -47,7 +47,7 @@ The machine learning model is implemented in a Jupyter Notebook. This notebook t
 
 1. Run the shell script to gather data:
     ```bash
-    bash test_ntru_performance.sh
+    bash ntru_best_data.sh
     ```
 
 2. Open the Jupyter Notebook to train the machine learning model:
@@ -57,6 +57,10 @@ The machine learning model is implemented in a Jupyter Notebook. This notebook t
 
 3. Use the trained model to predict optimal parameters for different message lengths as demonstrated in the notebook.
 
+4. Test the data in ```predicted_parameters.csv``` using ```test_parameters.sh```
+    ```bash
+    bash test_parameters.sh
+    ```
 ## Results
 
 The models trained in this project can predict the optimal parameters for the NTRU encryption algorithm for any message length between 1 and 500, ensuring efficient encryption and decryption operations.
