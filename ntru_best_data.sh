@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Output file for results
 output_file="ntru_best_parameters_per_length.csv"
 
-# Write header for results
 echo "mLen,N,q,dF,dg,dr,actual_encryption_time,actual_decryption_time" > $output_file
 
-# Function to test parameters
 function test_parameters {
     local mLen=$1
     local N=$2
@@ -15,7 +12,6 @@ function test_parameters {
     local dg=$5
     local dr=$6
 
-    # Generate keys and message
     python3 NTRU.py -G -N $N -q $q -df $dF -dg $dg -d $dr -k temp_key > /dev/null 2>&1
     dd if=/dev/urandom bs=1 count=$mLen of=temp_message > /dev/null 2>&1
 
@@ -44,11 +40,11 @@ function find_best_parameters {
     # Try different parameter combinations
     for i in $(seq 1 100); do
         # Generate random parameters
-        N=$((RANDOM % 1024 + 256))  # Example range for N
-        q=$((RANDOM % 2048 + 512))  # Example range for q
-        dF=$((RANDOM % 20 + 1))     # Example range for dF
-        dg=$((RANDOM % 20 + 1))     # Example range for dg
-        dr=$((RANDOM % 20 + 1))     # Example range for dr
+        N=$((RANDOM % 1024 + 256)) 
+        q=$((RANDOM % 2048 + 512))
+        dF=$((RANDOM % 20 + 1))     
+        dg=$((RANDOM % 20 + 1))    
+        dr=$((RANDOM % 20 + 1))
 
         # Test parameters and get actual times
         read -r actual_encryption_time actual_decryption_time <<< $(test_parameters $mLen $N $q $dF $dg $dr)
